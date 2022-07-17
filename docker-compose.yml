@@ -3,6 +3,8 @@ version: '3.9'
 services:
   app:
     image: balbatross/sapro-bio-plant:main
+    volumes:
+      - /home/ubuntu/greenlock:/app/greenlock.d
     ports:
       - 80:80
       - 443:443
