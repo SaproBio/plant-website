@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN yarn
+
 WORKDIR /app/website
 
 RUN yarn
@@ -13,7 +15,5 @@ ENV NODE_ENV=production
 RUN yarn build
 
 WORKDIR /app/
-
-RUN yarn
 
 CMD ["yarn", "start"]
