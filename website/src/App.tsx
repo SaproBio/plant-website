@@ -39,8 +39,8 @@ function App() {
       <Paper sx={{flex: 0.3, display: 'flex', flexDirection: 'column', padding: '6px'}}>
         {renderData()}
       </Paper>
-      <Box sx={{flex: 0.7, bgcolor: 'primary.main'}}>
-        <Typography>Live feed goes here</Typography>
+      <Box sx={{flex: 0.7, bgcolor: 'primary.main', backgroundImage: `url('/insight.jpg')`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+        {/* <Typography>Live feed goes here</Typography> */}
       </Box>
     </div>
   );

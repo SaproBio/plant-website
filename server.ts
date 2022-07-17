@@ -3,11 +3,15 @@ config();
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors';
-
+import { writeFileSync } from 'fs';
+import path from 'path'
 import { PrismaClient } from '@prisma/client';
 import { nanoid } from 'nanoid';
+import multer from 'multer'
 
 const greenlock = require('greenlock-express');
+
+const upload = multer()
 
 const prisma = new PrismaClient();
 
@@ -61,6 +65,17 @@ app.post('/inlet', async (req, res) => {
             data
         })
 
+        res.send({success: true})
+    }
+})
+
+app.get('/insight.jpg', (req, res) => {
+    res.sendFile(path.join(__dirname, './insight.jpg'))
+})
+
+app.post('/insight', upload.single('insight'), async (req, res) => {
+    if(req.body.pwd == process.env.PWD_SECRET){
+        writeFileSync(path.join(__dirname, './insight.jpg'), req.file?.buffer || '')
         res.send({success: true})
     }
 })
